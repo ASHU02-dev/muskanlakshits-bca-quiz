@@ -1,47 +1,33 @@
 /* ================= BODY ================= */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, #eef2f7, #e3ecf5);
+    background: #0f172a; /* professional dark */
     margin: 0;
     text-align: center;
-    color: #333;
-    transition: 0.3s;
+    color: #e5e7eb;
 }
 
-/* ================= FLOATING BG ================= */
-body::before, body::after {
+/* subtle light effect */
+body::before {
     content: "";
     position: fixed;
-    border-radius: 50%;
+    inset: 0;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(59,130,246,0.15), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139,92,246,0.12), transparent 50%);
     z-index: -1;
-    opacity: 0.1;
-}
-
-body::before {
-    width: 200px;
-    height: 200px;
-    top: -50px;
-    left: -50px;
-    background: #3498db;
-}
-
-body::after {
-    width: 300px;
-    height: 300px;
-    bottom: -100px;
-    right: -100px;
-    background: #2ecc71;
 }
 
 /* ================= CONTAINER ================= */
 .container {
-    background: #fff;
+    background: #ffffff;
+    color: #111;
     width: 90%;
     max-width: 450px;
     margin: 60px auto;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     transition: 0.3s;
 }
 
@@ -59,8 +45,8 @@ input, select {
 }
 
 input:focus, select:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 6px rgba(52,152,219,0.3);
+    border-color: #3b82f6;
+    box-shadow: 0 0 6px rgba(59,130,246,0.3);
 }
 
 /* ================= BUTTON ================= */
@@ -69,20 +55,22 @@ button {
     margin: 6px;
     border: none;
     border-radius: 8px;
-    background: linear-gradient(135deg, #3498db, #6c5ce7);
+    background: #3b82f6;
     color: white;
     cursor: pointer;
     transition: 0.3s;
+    font-weight: 600;
 }
 
 button:hover {
+    background: #2563eb;
     transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 /* ================= OPTIONS ================= */
 .option {
-    background: #f7f9fc;
+    background: #f1f5f9;
+    color: #111;
     margin: 10px;
     padding: 14px;
     border-radius: 10px;
@@ -91,36 +79,37 @@ button:hover {
 }
 
 .option:hover {
-    background: #eaf2fb;
+    background: #e2e8f0;
     transform: translateX(5px);
 }
 
+/* ✅ CORRECT / WRONG FIX */
 .correct {
-    background: #2ecc71 !important;
+    background: #22c55e;
     color: white;
 }
 
 .wrong {
-    background: #e74c3c !important;
+    background: #ef4444;
     color: white;
 }
 
 /* ================= PROGRESS ================= */
 .progress {
     height: 10px;
-    background: #eee;
+    background: #e5e7eb;
     border-radius: 10px;
 }
 
 .bar {
     height: 10px;
-    background: linear-gradient(90deg, #3498db, #6c5ce7);
+    background: #3b82f6;
 }
 
 /* ================= TIMER ================= */
 #timer {
     font-weight: bold;
-    color: #3498db;
+    color: #3b82f6;
 }
 
 /* ================= LEADERBOARD ================= */
@@ -130,58 +119,79 @@ ul {
 }
 
 #board li {
-    background: linear-gradient(45deg, #74ebd5, #9face6);
-    color: black;
+    background: #f1f5f9;
+    color: #111;
     margin: 8px;
     padding: 10px;
     border-radius: 8px;
     font-weight: bold;
 }
 
-/* Top scorer */
+/* top rank */
 #board li:first-child {
     background: gold;
     color: black;
 }
 
 /* ================= CHART ================= */
-#leaderboardChart {
-    background: #fff;
-    border-radius: 10px;
-    padding: 10px;
+#chartContainer {
+    margin: 20px 0;
+    height: 250px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 10px;
+    border-top: 2px solid #ccc;
+}
+
+.barChart {
+    width: 40px;
+    background: #3b82f6;
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: white;
+    font-size: 12px;
+    transition: height 0.5s;
+}
+
+.barLabel {
+    position: absolute;
+    bottom: -20px;
+    font-size: 12px;
+    color: #111;
 }
 
 /* ================= DARK MODE ================= */
 body.dark-mode {
-    background: #121212;
-    color: #eee;
+    background: #020617;
+    color: #e5e7eb;
 }
 
 body.dark-mode .container {
-    background: #1e1e1e;
+    background: #1e293b;
+    color: white;
 }
 
 body.dark-mode input,
 body.dark-mode select {
-    background: #2c2c2c;
+    background: #334155;
     color: white;
-    border: 1px solid #444;
+    border: 1px solid #555;
 }
 
 body.dark-mode .option {
-    background: #2c2c2c;
+    background: #334155;
+    color: white;
 }
 
 body.dark-mode .option:hover {
-    background: #3a3a3a;
-}
-
-body.dark-mode button {
-    background: linear-gradient(135deg, #6c5ce7, #3498db);
+    background: #475569;
 }
 
 body.dark-mode #board li {
-    background: linear-gradient(45deg, #434343, #000000);
+    background: #334155;
     color: white;
 }
 
@@ -190,219 +200,16 @@ body.dark-mode #board li {
     position: fixed;
     top: 20px;
     right: 20px;
-}/* ================= HEADER ================= */
-
-/* ================= FINAL UI UPGRADE PATCH ================= */
-
-/* 🌈 Animated Gradient Background */
-body {
-    background: linear-gradient(270deg, #667eea, #764ba2, #6dd5ed, #2193b0) !important;
-    background-size: 800% 800% !important;
-    animation: gradientFlow 15s ease infinite !important;
 }
 
-@keyframes gradientFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* ✨ Glass Effect Container */
-.container {
-    background: rgba(255, 255, 255, 0.15) !important;
-    backdrop-filter: blur(15px) !important;
-    border: 1px solid rgba(255,255,255,0.2) !important;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3) !important;
-}
-
-/* 🌟 Floating Glow Background */
-body::before, body::after {
-    content: "" !important;
-    position: fixed !important;
-    border-radius: 50% !important;
-    z-index: -1 !important;
-    filter: blur(80px) !important;
-    opacity: 0.6 !important;
-}
-
-body::before {
-    width: 300px !important;
-    height: 300px !important;
-    background: #ff6ec4 !important;
-    top: 10% !important;
-    left: 5% !important;
-    animation: float1 12s infinite alternate !important;
-}
-
-body::after {
-    width: 350px !important;
-    height: 350px !important;
-    background: #00f2fe !important;
-    bottom: 10% !important;
-    right: 5% !important;
-    animation: float2 15s infinite alternate !important;
-}
-
-@keyframes float1 {
-    from { transform: translateY(0); }
-    to { transform: translateY(60px); }
-}
-
-@keyframes float2 {
-    from { transform: translateY(0); }
-    to { transform: translateY(-60px); }
-}
-
-/* 🔘 Buttons Upgrade */
-button {
-    background: linear-gradient(135deg, #ff7eb3, #ff758c, #6a11cb) !important;
-    color: white !important;
-    font-weight: bold !important;
-}
-
-button:hover {
-    transform: scale(1.08) !important;
-    box-shadow: 0 0 15px rgba(255,255,255,0.4) !important;
-}
-
-/* 📊 Chart Fix */
-#leaderboardChart {
-    background: white !important;
-    border-radius: 10px !important;
-    padding: 10px !important;
-}
-
-/* 🏆 Leaderboard Glow */
-#board li {
-    background: linear-gradient(45deg, #ffecd2, #fcb69f) !important;
-    color: black !important;
-    font-weight: bold !important;
-}
-
-/* 🥇 Top Rank Highlight */
-#board li:first-child {
-    background: gold !important;
-    color: black !important;
-}
-
-/* 🌙 Dark Mode Upgrade */
-body.dark-mode {
-    background: linear-gradient(270deg, #0f2027, #203a43, #2c5364) !important;
-    background-size: 800% 800% !important;
-    animation: gradientFlow 20s ease infinite !important;
-}
-
-body.dark-mode .container {
-    background: rgba(0,0,0,0.5) !important;
-    backdrop-filter: blur(20px) !important;
-}
-
-body.dark-mode #board li {
-    background: linear-gradient(45deg, #434343, #000000) !important;
-    color: white !important;
-}/* ================= EPIC BACKGROUND ONLY ================= */
-
-/* 🌈 Animated Gradient */
-body {
-    background: linear-gradient(270deg, #667eea, #764ba2, #6dd5ed, #2193b0) !important;
-    background-size: 800% 800% !important;
-    animation: gradientFlow 15s ease infinite !important;
-}
-
-/* Smooth animation */
-@keyframes gradientFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* 🌟 Floating Glow Effects */
-body::before, body::after {
-    content: "" !important;
-    position: fixed !important;
-    border-radius: 50% !important;
-    z-index: -1 !important;
-    filter: blur(100px) !important;
-    opacity: 0.5 !important;
-}
-
-/* Pink glow */
-body::before {
-    width: 350px !important;
-    height: 350px !important;
-    background: #ff6ec4 !important;
-    top: 10% !important;
-    left: 5% !important;
-    animation: floatUp 12s infinite alternate !important;
-}
-
-/* Blue glow */
-body::after {
-    width: 400px !important;
-    height: 400px !important;
-    background: #00f2fe !important;
-    bottom: 10% !important;
-    right: 5% !important;
-    animation: floatDown 15s infinite alternate !important;
-}
-
-@keyframes floatUp {
-    from { transform: translateY(0); }
-    to { transform: translateY(80px); }
-}
-
-@keyframes floatDown {
-    from { transform: translateY(0); }
-    to { transform: translateY(-80px); }
-}
-
-/* 🌙 Dark Mode Background */
-body.dark-mode {
-    background: linear-gradient(270deg, #0f2027, #203a43, #2c5364) !important;
-    background-size: 800% 800% !important;
-    animation: gradientFlow 20s ease infinite !important;
-}/* ================= CURSOR GLOW ================= */
-
+/* ================= CURSOR GLOW ================= */
 #cursor-glow {
     position: fixed;
     width: 120px;
     height: 120px;
     border-radius: 50%;
     pointer-events: none;
-    background: radial-gradient(circle, rgba(255,255,255,0.35), transparent 70%);
+    background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 70%);
     transform: translate(-50%, -50%);
-    z-index: 9999;
-    mix-blend-mode: overlay;
-    transition: transform 0.08s ease-out;
-}
-
-/* Dark mode glow */
-body.dark-mode #cursor-glow {
-    background: radial-gradient(circle, rgba(0,255,255,0.25), transparent 70%);
-}/* ================= PROFESSIONAL BACKGROUND ================= */
-
-body {
-    background-color: #0b1220 !important; /* deep navy */
-    color: #e2e8f0;
-}
-
-/* soft radial lights (very subtle) */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-        radial-gradient(600px circle at 20% 20%, rgba(59,130,246,0.12), transparent 60%),
-        radial-gradient(500px circle at 80% 70%, rgba(16,185,129,0.10), transparent 60%);
-    z-index: -1;
-}
-
-/* slight texture for premium feel */
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
-    opacity: 0.06;
-    z-index: -1;
+    z-index: 999;
 }
