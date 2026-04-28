@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+<title>BCA Quiz Master Pro</title>
+<link rel="stylesheet" href="style.css"><script>
+if(!localStorage.getItem("loggedInUser")){
+    window.location = "login.html";
+}
+</script>
+<html>
+
+</head>
+
+<body>
+<!-- Dark Mode Toggle -->
+<div id="darkToggle">
+  <input type="checkbox" id="darkSwitch">
+  <label for="darkSwitch">🌙</label>
+</div>
+<div class="container">
+
+<h1>BCA Quiz Master Pro</h1>
+
+<input type="text" id="username" readonly>>
+
+<h3>Select Subject</h3>
+<select id="subject">
+<option value="c">C Programming</option>
+<option value="dbms">DBMS</option>
+<option value="os">Operating System</option>
+<option value="se">Software Engineering</option>
+</select>
+
+<h3>Select Level</h3>
+<select id="level">
+<option value="easy">Beginner</option>
+<option value="medium">Intermediate</option>
+<option value="hard">Advanced</option>
+</select>
+
+<h3>Number of Questions</h3>
+<select id="count">
+<option value="5">5 Questions</option>
+<option value="10">10 Questions</option>
+<option value="20">20 Questions</option>
+</select>
+
+<br><br>
+
+<button onclick="startQuiz()">Start Quiz</button>
+<button onclick="openLeaderboard()">Leaderboard</button>
+<button onclick="logout()">Logout</button>
+
+</div>
+
+<script src="questions.js"></script>
+<script src="script.js"></script>
+<div id="cursor-glow"></div>
+</body>
+</html>

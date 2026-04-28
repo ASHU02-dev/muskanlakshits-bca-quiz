@@ -1,0 +1,32 @@
+6+<!DOCTYPE html>
+<html>
+<head>
+<title>Result</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Quiz Result</h1>
+
+<h2 id="result"></h2>
+
+<button onclick="location.href='index.html'">Play Again</button>
+
+</div>
+
+<script>
+
+let name = localStorage.getItem("name");
+let score = localStorage.getItem("score");
+let count = localStorage.getItem("count");
+
+document.getElementById("result").innerText =
+name + " your score is " + score + " / " + count;
+
+</script>
+
+</body>
+</html>

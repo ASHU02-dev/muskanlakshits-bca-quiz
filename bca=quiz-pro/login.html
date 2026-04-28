@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>Login / Signup</h1>
+
+<input type="text" id="loginUser" placeholder="Username">
+<br><br>
+
+<div style="position:relative; width:90%; margin:auto;">
+    <input type="password" id="loginPass" placeholder="Password" style="width:100%;">
+    
+    <span onclick="togglePass()" 
+          style="position:absolute; right:10px; top:10px; cursor:pointer;">
+        👁
+    </span>
+</div>
+
+<br><br>
+
+<button onclick="login()">Login</button>
+<button onclick="signup()">Signup</button>
+
+<p id="msg"></p>
+
+</div>
+
+<script>function speak(text){
+    let msg = new SpeechSynthesisUtterance(text);
+    msg.rate = 1;
+    msg.pitch = 1;
+    msg.volume = 1;
+    speechSynthesis.speak(msg);
+}
+
+// 🔁 Already login
+if(localStorage.getItem("loggedInUser")){
+    window.location = "index.html";
+}
+
+// message
+function msg(text, color){
+    let m = document.getElementById("msg");
+    m.innerText = text;
+    m.style.color = color;
+}
+
+// signup
+function signup(){
+    let u = document.getElementById("loginUser").value.trim();
+    let p = document.getElementById("loginPass").value.trim();
+
+    if(!u || !p){
+        msg("Fill all fields", "red");
+        return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users") || "{}");
+
+    if(users[u]){
+        msg("User already exists", "red");
+        return;
+    }
+
+    users[u] = p;
+    localStorage.setItem("users", JSON.stringify(users));
+
+    msg("Signup successful! Now login", "green");
+}
+
+// login
+function login(){
+    let u = document.getElementById("loginUser").value.trim();
+    let p = document.getElementById("loginPass").value.trim();
+
+    let users = JSON.parse(localStorage.getItem("users") || "{}");
+
+    if(users[u] && users[u] === p){
+    localStorage.setItem("loggedInUser", u);
+    msg("Login success", "green");
+
+    speak("Welcome " + u + " to B C A Quiz Master");
+
+    setTimeout(()=>{
+        window.location = "index.html";
+    },1500);
+
+} else {
+    msg("Invalid credentials", "red");
+}
+}
+
+// 👁 toggle password
+function togglePass(){
+    let p = document.getElementById("loginPass");
+    p.type = p.type === "password" ? "text" : "password";
+}
+
+</script>
+<div id="cursor-glow"></div>
+</body>
+</html>
